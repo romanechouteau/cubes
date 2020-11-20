@@ -1,5 +1,5 @@
-import { Canvas } from 'react-three-fiber'
 import styled from 'styled-components'
+import { Canvas } from 'react-three-fiber'
 
 const DivCanvas = styled.div`
   position: absolute;

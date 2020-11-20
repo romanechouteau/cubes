@@ -11,9 +11,8 @@ const reducer = (state = stateInit, action = {}) => {
     case SHUFFLE:
       return shuffle(state)
 
-    case SORT: {
+    case SORT:
       return sortBy(state, ['id'])
-    }
 
     case CHANGE_ODD:
       return state.map((cube) => cube.id % 2 === 0 ? cube : { ...cube, specialAnim: true })

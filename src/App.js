@@ -1,14 +1,14 @@
-import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { add_cube, shuffle, sort, change_odd, stop_odd, reset, easter_egg } from './actions/actions-types'
-import StyledCanvas from './Styles/StyledCanvas'
-import Buttons from './Styles/Buttons'
-import Button from './Styles/Button'
 import Cube from './components/Cube'
+import Button from './Styles/Button'
+import Buttons from './Styles/Buttons'
+import StyledCanvas from './Styles/StyledCanvas'
+import { add_cube, shuffle, sort, change_odd, stop_odd, reset, easter_egg } from './actions/actions-types'
 
-const easterEggId = 17
 const cubesLine = 7
+const easterEggId = 17
 
 const App = () => {
   const cubes = useSelector(state => state)
@@ -25,19 +25,32 @@ const App = () => {
       <StyledCanvas camera={ { position: [0, 0, 5] } }>
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
-        {cubes.map((cube, index) => {
-          const y = Math.floor(index / cubesLine)
-          const x = index - (cubesLine * y)
-          return <Cube position={[ -3 + x, 3 - y, 0]} key={cube.id} specialAnim={cube.specialAnim} index={cube.id} color={cube.color} easterEgg={cube.easterEgg}/>
-        })}
+        {cubes.map((cube, i) =>
+          {
+            const y = Math.floor(i / cubesLine)
+            const x = i - (cubesLine * y)
+
+            return (
+              <Cube
+                key={cube.id}
+                position={[ -3 + x, 3 - y, 0]}
+                index={cube.id}
+                color={cube.color}
+                specialAnim={cube.specialAnim}
+                easterEgg={cube.easterEgg}
+              />
+            )
+          }
+        )}
       </StyledCanvas>
+
       <Buttons>
-        <Button onClick={() => dispatch(add_cube())} text='Add cube'></Button>
-        <Button onClick={() => dispatch(shuffle())} text='Shuffle'></Button>
-        <Button onClick={() => dispatch(sort())} text='Sort'></Button>
-        <Button onClick={() => dispatch(change_odd())} text='Change odd'></Button>
-        <Button onClick={() => dispatch(stop_odd())} text='Stop odd'></Button>
-        {cubes.length > 0 && <Button onClick={() => dispatch(reset())} text='Reset'></Button>}
+        <Button onClick={() => dispatch(add_cube())} text='Add cube' />
+        <Button onClick={() => dispatch(shuffle())} text='Shuffle' />
+        <Button onClick={() => dispatch(sort())} text='Sort' />
+        <Button onClick={() => dispatch(change_odd())} text='Change odd' />
+        <Button onClick={() => dispatch(stop_odd())} text='Stop odd' />
+        {cubes.length > 0 && <Button onClick={() => dispatch(reset())} text='Reset' />}
       </Buttons>
     </div>
   );

@@ -1,14 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import App from './App'
+import reportWebVitals from './reportWebVitals'
 
-import { createStore } from 'redux';
-import { Provider } from 'react-redux'; // permet de contextualiser le reducer dans l'arbre React
-import reducer from './reducers/cube';
+import reducer from './reducers/cube'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
 
-// création du store
 const store = createStore(reducer);
 
 ReactDOM.render(
