@@ -1,7 +1,9 @@
 import { shuffle } from 'lodash'
 import { ADD_CUBE, SHUFFLE, CHANGE_ODD, STOP_ODD, RESET } from '../constants/actions'
 
-const reducer = (state, action) => {
+const stateInit = []
+
+const reducer = (state = stateInit, action = {}) => {
   switch (action.type) {
     case ADD_CUBE:
       return [...state, { id: state.length, specialAnim: false }]
@@ -21,7 +23,7 @@ const reducer = (state, action) => {
     //   return cubes
 
     case RESET:
-      return []
+      return stateInit
 
     default:
       return state;

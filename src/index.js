@@ -4,9 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { createStore } from 'redux';
+import { Provider } from 'react-redux'; // permet de contextualiser le reducer dans l'arbre React
+import reducer from './reducers/cube';
+
+// création du store
+const store = createStore(reducer);
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
