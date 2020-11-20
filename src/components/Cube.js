@@ -1,5 +1,6 @@
-import { useRef } from 'react'
+import { useRef, Fragment } from 'react'
 import { useFrame } from 'react-three-fiber'
+import { Text } from 'drei'
 
 const scale = 0.5
 
@@ -24,6 +25,7 @@ const Cube = (props) => {
   })
 
   return (
+    <Fragment>
     <mesh
       {...props}
       ref={mesh}
@@ -31,6 +33,13 @@ const Cube = (props) => {
       {props.easterEgg ? <sphereGeometry args={[0.8, 16, 16]} /> : <boxGeometry args={[1, 1, 1]} />}
       <meshStandardMaterial color={`hsl(${props.index * 8 - (Math.floor(props.index / 255) * 255)}, 70%, 55%)`} />
     </mesh>
+    <Text
+      color="black"
+      position={ [props.position[0] * 0.9, props.position[1] * 0.9, 0.6] }
+    >
+      { props.index.toString() }
+    </Text>
+    </Fragment>
   )
 }
 
