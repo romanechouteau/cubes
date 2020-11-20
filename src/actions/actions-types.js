@@ -1,4 +1,4 @@
-import { ADD_CUBE, SHUFFLE, CHANGE_ODD, STOP_ODD, RESET, EASTER_EGG } from '../constants/actions'
+import { ADD_CUBE, SHUFFLE, SORT, CHANGE_ODD, STOP_ODD, RESET, EASTER_EGG } from '../constants/actions'
 
 export const add_cube = () => {
   return {
@@ -9,6 +9,12 @@ export const add_cube = () => {
 export const shuffle = () => {
   return {
     type: SHUFFLE
+  }
+}
+
+export const sort = () => {
+  return {
+    type: SORT
   }
 }
 

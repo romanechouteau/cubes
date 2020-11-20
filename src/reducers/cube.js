@@ -1,5 +1,5 @@
-import { shuffle } from 'lodash'
-import { ADD_CUBE, SHUFFLE, CHANGE_ODD, STOP_ODD, RESET, EASTER_EGG } from '../constants/actions'
+import { shuffle, sortBy } from 'lodash'
+import { ADD_CUBE, SHUFFLE, SORT, CHANGE_ODD, STOP_ODD, RESET, EASTER_EGG } from '../constants/actions'
 
 const stateInit = []
 
@@ -10,6 +10,10 @@ const reducer = (state = stateInit, action = {}) => {
 
     case SHUFFLE:
       return shuffle(state)
+
+    case SORT: {
+      return sortBy(state, ['id'])
+    }
 
     case CHANGE_ODD:
       return state.map((cube) => cube.id % 2 === 0 ? cube : { ...cube, specialAnim: true })

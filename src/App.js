@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 
-import { add_cube, shuffle, change_odd, stop_odd, reset, easter_egg } from './actions/actions-types'
+import { add_cube, shuffle, sort, change_odd, stop_odd, reset, easter_egg } from './actions/actions-types'
 import StyledCanvas from './Styles/StyledCanvas'
 import Buttons from './Styles/Buttons'
 import Button from './Styles/Button'
@@ -34,6 +34,7 @@ const App = () => {
       <Buttons>
         <Button onClick={() => dispatch(add_cube())} text='Add cube'></Button>
         <Button onClick={() => dispatch(shuffle())} text='Shuffle'></Button>
+        <Button onClick={() => dispatch(sort())} text='Sort'></Button>
         <Button onClick={() => dispatch(change_odd())} text='Change odd'></Button>
         <Button onClick={() => dispatch(stop_odd())} text='Stop odd'></Button>
         {cubes.length > 0 && <Button onClick={() => dispatch(reset())} text='Reset'></Button>}
