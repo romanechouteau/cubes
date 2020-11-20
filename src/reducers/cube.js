@@ -20,6 +20,7 @@ const reducer = (state = stateInit, action = {}) => {
     case EASTER_EGG:
       const cubes = [...state]
       cubes[cubes.length - 1] = { ...cubes[cubes.length - 1], easterEgg: true }
+
       return cubes
 
     case RESET:
