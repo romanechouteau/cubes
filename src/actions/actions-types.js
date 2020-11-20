@@ -1,4 +1,4 @@
-import { ADD_CUBE, SHUFFLE, CHANGE_ODD, STOP_ODD, RESET } from '../constants/actions'
+import { ADD_CUBE, SHUFFLE, CHANGE_ODD, STOP_ODD, RESET, EASTER_EGG } from '../constants/actions'
 
 export const add_cube = () => {
   return {
@@ -27,5 +27,11 @@ export const stop_odd = () => {
 export const reset = () => {
   return {
     type: RESET
+  }
+}
+
+export const easter_egg = () => {
+  return {
+    type: EASTER_EGG
   }
 }
