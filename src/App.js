@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useDispatch, useSelector } from 'react-redux'
 
-function App() {
+import { add_cube, shuffle, change_odd, stop_odd, reset } from './actions/actions-types'
+
+const App = () => {
+  const cubes = useSelector(state => state)
+  const dispatch = useDispatch()
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <ul>
+        {cubes.map((cube) => (
+            <div key={cube.id} >cube : {cube.id}</div>
+          ))}
+      </ul>
+      <div>
+        <button onClick={() => dispatch(add_cube())}>Add cube</button>
+        <button onClick={() => dispatch(shuffle())}>Shuffle</button>
+        <button onClick={() => dispatch(change_odd())}>Change odd</button>
+        <button onClick={() => dispatch(stop_odd())}>Stop odd</button>
+        {cubes.length > 0 && <button onClick={() => dispatch(reset())}>Reset</button>}
+      </div>
     </div>
   );
 }
